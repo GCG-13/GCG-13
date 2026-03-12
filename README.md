@@ -35,4 +35,4 @@ Soy un programador enfocado en crear soluciones reales y aprender constantemente
 ---
 
 📫 **¿Cómo contactarme?**
-¡Escríbeme por aquí o EN Whatsapp +58 426-2171291!
+¡Escríbeme por aquí o en Whatsapp +58 426-2171291!
