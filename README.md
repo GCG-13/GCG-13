@@ -1,4 +1,4 @@
-# Hi there! I'm [TU NOMBRE AQUÍ] 👋
+# Hi there! I'm Gustavo Martinez 👋
 ### Full Stack Developer | Founder of GCG-13 | CS50 Certified
 
 Soy un programador enfocado en crear soluciones reales y aprender constantemente. Me gusta la lógica pura y construir sistemas desde cero.
