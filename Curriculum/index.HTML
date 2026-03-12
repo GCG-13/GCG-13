@@ -9,30 +9,47 @@
         body { background-color: #0f172a; color: #f8fafc; }
         .gradient-text {
             background: linear-gradient(90deg, #38bdf8, #818cf8);
-            background-clip: text; /* standard property for clipping gradient to text */
-            -webkit-background-clip: text; /* fallback for older WebKit browsers */
+            background-clip: text; /* estándar */
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .card { background-color: #1e293b; border: 1px solid #334155; }
+        /* Animación suave para el letrero */
+        #language-modal { transition: opacity 0.5s ease; }
     </style>
     <link rel="icon" href="icon/favicon.png" type="image/png">
 </head>
 <body class="font-sans antialiased">
 
+    <!-- modal de selección lingüística, con atributos ARIA para accesibilidad -->
+    <div id="language-modal" role="dialog" aria-modal="true" aria-labelledby="lang-modal-title" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="text-center p-8 card rounded-2xl max-w-sm w-full mx-4 shadow-2xl">
+            <h2 id="lang-modal-title" class="text-2xl font-bold mb-6">Select Language / Selecciona Idioma</h2>
+            <div class="flex flex-col gap-4">
+                <button type="button" onclick="setLanguage('es')" class="bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition transform hover:scale-105">Español</button>
+                <button type="button" onclick="setLanguage('en')" class="border border-slate-600 hover:bg-slate-800 py-3 rounded-xl font-bold transition transform hover:scale-105">English</button>
+            </div>
+        </div>
+    </div>
+
     <header class="max-w-4xl mx-auto pt-20 px-6 text-center">
-        <h1 class="text-5xl font-extrabold mb-4">Soy <span class="gradient-text">GCG-13</span></h1>
-        <p class="text-xl text-slate-400 mb-8">Lead Developer | Founder of GCG-13 | CS50 Certified</p>
+        <!-- botón de idioma persistente -->
+        <div class="absolute top-4 right-4">
+            <button id="btn-lang-toggle" type="button" class="text-sm text-slate-400 hover:text-white" onclick="showLanguageModal()">🌐</button>
+        </div>
+        <h1 class="text-5xl font-extrabold mb-4"><span id="txt-hero-greet">Soy</span> <span class="gradient-text">GCG-13</span></h1>
+        <p id="txt-hero-desc" class="text-xl text-slate-400 mb-8">Lead Developer | Founder of GCG-13 | CS50 Certified</p>
         <div class="flex justify-center gap-4">
             <a href="https://github.com/GCG-13" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-bold transition">GitHub</a>
-            <a href="#contacto" class="border border-slate-600 hover:bg-slate-800 px-6 py-2 rounded-full font-bold transition">Contacto</a>
+            <a href="#contacto" id="btn-contact" class="border border-slate-600 hover:bg-slate-800 px-6 py-2 rounded-full font-bold transition">Contacto</a>
         </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-6 py-16">
         
         <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Sobre mí</h2>
-            <p class="text-slate-300 leading-relaxed">
+            <h2 id="txt-about-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Sobre mí</h2>
+            <p id="txt-about-p" class="text-slate-300 leading-relaxed">
                 Desarrollador enfocado en la creación de soluciones eficientes. Fundador de <strong>GCG-13</strong>, 
                 donde lidero el desarrollo de aplicaciones web modernas (PWA) y motores de lógica propia. 
                 Mi enfoque combina la rigurosidad algorítmica de <strong>Harvard CS50</strong> con la agilidad 
@@ -41,17 +58,17 @@
         </section>
 
         <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Proyectos Destacados</h2>
+            <h2 id="txt-projects-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Proyectos Destacados</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="card p-6 rounded-xl">
                     <h3 class="text-xl font-bold mb-2 text-blue-400">GCG Store Digital</h3>
-                    <p class="text-sm text-slate-400 mb-4">Marketplace de artículos digitales con Firebase y PWA.</p>
+                    <p id="txt-proj-store" class="text-sm text-slate-400 mb-4">Marketplace de artículos digitales con Firebase y PWA.</p>
                     <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">Firebase</span>
                     <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">PWA</span>
                 </div>
                 <div class="card p-6 rounded-xl">
                     <h3 class="text-xl font-bold mb-2 text-blue-400">Custom AI Engine</h3>
-                    <p class="text-sm text-slate-400 mb-4">Motor de lógica NLP basado en reglas para asistencia técnica sin APIs externas.</p>
+                    <p id="txt-proj-ai" class="text-sm text-slate-400 mb-4">Motor de lógica NLP basado en reglas para asistencia técnica sin APIs externas.</p>
                     <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">JavaScript</span>
                     <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">NLP</span>
                 </div>
@@ -59,19 +76,19 @@
         </section>
 
         <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Formación & Certificados</h2>
+            <h2 id="txt-edu-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Formación & Certificados</h2>
             <ul class="space-y-4 text-slate-300">
                 <li class="flex items-start">
                     <span class="text-blue-500 mr-2">✔</span>
-                    <div><strong>CS50's Introduction to Computer Science</strong> - Harvard University</div>
+                    <div><strong id="txt-edu-1">CS50's Introduction to Computer Science</strong> - Harvard University</div>
                 </li>
                 <li class="flex items-start">
                     <span class="text-blue-500 mr-2">✔</span>
-                    <div><strong>Desarrollo con IA 2026</strong> - Big School</div>
+                    <div><strong id="txt-edu-2">Desarrollo con IA 2026</strong> - Big School</div>
                 </li>
                 <li class="flex items-start">
                     <span class="text-blue-500 mr-2">✔</span>
-                    <div><strong>Especialización en Git, GitHub y Machine Learning</strong> - Platzi</div>
+                    <div><strong id="txt-edu-3">Especialización en Git, GitHub y Machine Learning</strong> - Platzi</div>
                 </li>
             </ul>
         </section>
@@ -79,9 +96,84 @@
     </main>
 
     <footer id="contacto" class="bg-slate-900 py-10 text-center">
-        <p class="text-slate-500 mb-2">¿Listo para construir el futuro?</p>
+        <p id="txt-footer" class="text-slate-500 mb-2">¿Listo para construir el futuro?</p>
         <p class="font-bold">gcg13games@gmail.com</p>
     </footer>
 
+    <script>
+        const translations = {
+            // puede agregarse más idiomas aquí en el futuro
+            es: {
+                "txt-hero-greet": "Soy",
+                "txt-hero-desc": "Lead Developer | Fundador de GCG-13 | Certificado CS50",
+                "btn-contact": "Contacto",
+                "txt-about-title": "Sobre mí",
+                "txt-about-p": "Desarrollador enfocado en la creación de soluciones eficientes. Fundador de <strong>GCG-13</strong>, donde lidero el desarrollo de aplicaciones web modernas (PWA) y motores de lógica propia. Mi enfoque combina la rigurosidad algorítmica de <strong>Harvard CS50</strong> con la agilidad de las herramientas de IA más modernas del 2026.",
+                "txt-projects-title": "Proyectos Destacados",
+                "txt-proj-store": "Marketplace de artículos digitales con Firebase y PWA.",
+                "txt-proj-ai": "Motor de lógica NLP basado en reglas para asistencia técnica sin APIs externas.",
+                "txt-edu-title": "Formación & Certificados",
+                "txt-edu-1": "Introducción a las Ciencias de la Computación CS50",
+                "txt-edu-2": "Desarrollo con IA 2026",
+                "txt-edu-3": "Especialización en Git, GitHub y Machine Learning",
+                "txt-footer": "¿Listo para construir el futuro?"
+            },
+            en: {
+                "txt-hero-greet": "I am",
+                "txt-hero-desc": "Lead Developer | GCG-13 Founder | CS50 Certified",
+                "btn-contact": "Contact Me",
+                "txt-about-title": "About Me",
+                "txt-about-p": "Developer focused on creating efficient solutions. Founder of <strong>GCG-13</strong>, leading the development of modern web applications (PWA) and custom logic engines. My approach combines the algorithmic rigor of <strong>Harvard CS50</strong> with the agility of the most modern AI tools of 2026.",
+                "txt-projects-title": "Featured Projects",
+                "txt-proj-store": "Digital items marketplace built with Firebase and PWA.",
+                "txt-proj-ai": "Rule-based NLP logic engine for technical assistance without external APIs.",
+                "txt-edu-title": "Education & Certificates",
+                "txt-edu-1": "CS50's Introduction to Computer Science",
+                "txt-edu-2": "AI Development 2026",
+                "txt-edu-3": "Git, GitHub and Machine Learning Specialization",
+                "txt-footer": "Ready to build the future?"
+            }
+        };
+
+        function setLanguage(lang) {
+            if (!translations[lang]) {
+                lang = 'es'; // fallback
+            }
+            // actualizar atributo lang del documento
+            document.documentElement.lang = lang;
+
+            // Recorrer el diccionario y cambiar los textos
+            for (let id in translations[lang]) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerHTML = translations[lang][id];
+                }
+            }
+            
+            // ocultar modal
+            const modal = document.getElementById('language-modal');
+            modal.classList.add('opacity-0','pointer-events-none');
+            
+            // Guardar preferencia
+            localStorage.setItem('pref-lang', lang);
+        }
+
+        // funcion para reabrir el modal desde el botón persistente
+        function showLanguageModal() {
+            const modal = document.getElementById('language-modal');
+            modal.classList.remove('opacity-0','pointer-events-none');
+        }
+
+        // Revisar si ya eligió idioma antes
+        window.onload = () => {
+            const savedLang = localStorage.getItem('pref-lang');
+            if (savedLang) {
+                setLanguage(savedLang);
+            } else {
+                // no elegido antes, mostrar modal
+                showLanguageModal();
+            }
+        };
+    </script>
 </body>
 </html>
