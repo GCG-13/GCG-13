@@ -32,12 +32,8 @@ He desarrollado **Sensei-1.0**, un motor de Inteligencia Artificial Simbólica (
 ### [Sensei AI Core (Sensei-1.0)](https://github.com/GCG-13/Sensei-1.0-engine)
 **Motor de IA Experta.** Sistema modular con lógica de inferencia pedagógica para artes marciales. Implementa búsqueda difusa (fuzzy search) y procesamiento semántico local.
 
-### [GCG Store Digital](https://gcg13curriculum.netlify.app)
+### [GCG Store Digital](https://github.com/GCG-13/GCG-Store-Digital.git)
 **Marketplace PWA.** Aplicación web progresiva integrada con Firebase para la gestión de artículos digitales en tiempo real.
-
-### [GCG-13 Shooter Logic](https://github.com/GCG-13/)
-**Game Systems.** Lógica avanzada de servidor/cliente desarrollada en Lua, enfocada en optimización de red y mecánicas de disparo.
-
 
 ## 📊 GitHub Stats
 ![Gustavo's GitHub stats](https://github-readme-stats.vercel.app/api?username=GCG-13&show_icons=true&theme=tokyonight)
