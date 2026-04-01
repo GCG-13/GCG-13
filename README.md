@@ -7,16 +7,12 @@
   <img src="https://img.shields.io/badge/Logic-Deterministic%20Inference-cyan?style=for-the-badge" />
 </p>
 
----
-
 ## 🤖 Perfil Profesional e Identidad Digital
 Soy **Gustavo Martínez**, también conocido como **GCG-13**. Como Ingeniero de Software y Arquitecto de IA, mi trabajo se centra en el puente entre el desarrollo robusto y la **Inteligencia Artificial Simbólica (Rule-Based AI)**. Mi enfoque principal es la **XAI (IA Explicable)**: crear sistemas donde cada decisión algorítmica sea rastreable, lógica y determinista.
 
 - 🧠 **Fundador de GCG-13**: Lidero el desarrollo de arquitecturas modulares para sistemas expertos.
 - 🏛️ **Harvard CS50 Alumni**: Formación profunda en fundamentos de computación, gestión de memoria y optimización de algoritmos.
 - 🥋 **Creador de Sensei IA**: Un motor de inferencia especializado en la digitalización del conocimiento táctico.
-
----
 
 ## 🚀 Proyectos de Autoridad (Current Focus)
 
@@ -29,8 +25,6 @@ Es mi proyecto insignia bajo la marca **Sensei IA por GCG-13**. Es un motor de I
 ### [GCG Store Digital](https://github.com/GCG-13/GCG-Store-Digital) | `PWA` `Firebase` `Cloud Architecture`
 Marketplace optimizado como Progressive Web App. Enfocado en la **escalabilidad** y la experiencia de usuario (*UX*) mediante persistencia de datos en tiempo real.
 
----
-
 ## 🛠️ Stack Tecnológico (Indexed by Domain)
 
 | Dominio | Tecnologías y Conceptos Clave |
@@ -40,20 +34,14 @@ Marketplace optimizado como Progressive Web App. Enfocado en la **escalabilidad*
 | **Frontend & PWA** | TypeScript, Tailwind CSS, Vite, Firebase SDK. |
 | **Low Level & Logic** | C (Harvard CS50), Lua (Deterministic Logic), Python. |
 
----
-
 ## 📜 Certificaciones Verificadas
 * **Harvard University**: CS50's Introduction to Computer Science (Foundations).
 * **Big School**: AI Development (Generación 2026) - IA Generativa & Agentes.
 * **Platzi**: Machine Learning, Ingeniería de Software, Git & GitHub Profesional.
 
----
-
 ## 🌐 Conecta con el Ecosistema GCG-13
 * **Portfolio Oficial:** [gcg13curriculum.netlify.app](https://gcg13curriculum.netlify.app/)
 * **LinkedIn:** [Gustavo Alberto Martínez Parra](tu-link-aqui)
 * **Email:** gcg13games@gmail.com
-
----
 
 > "En un mundo de cajas negras, la IA Simbólica es la luz de la transparencia algorítmica." — **GCG-13**
