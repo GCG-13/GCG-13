@@ -1,53 +1,59 @@
-# Hi there! I'm Gustavo Martinez (GCG-13) 👋
-### Software Engineer | AI Architect | Founder of GCG-13 | CS50 Certified
+# Gustavo Alberto Martínez Parra (GCG-13) 👋
+### Software Engineer | AI Architect | Symbolic AI Expert | CS50 Certified
 
-Soy un **Ingeniero de Software** enfocado en la construcción de sistemas expertos y arquitecturas modulares. Mi pasión es transformar lógica compleja en soluciones reales, combinando la rigurosidad algorítmica de **Harvard CS50** con principios de diseño **SOLID** y tecnologías modernas.
+<p align="left">
+  <img src="https://img.shields.io/badge/Focus-Symbolic%20AI-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Specialization-XAI%20(Explainable%20AI)-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Logic-Deterministic%20Inference-cyan?style=for-the-badge" />
+</p>
 
-## 🚀 Lo que estoy construyendo (Current Focus)
+---
 
-### 🧠 Sensei-1.0 Engine
-He desarrollado **Sensei-1.0**, un motor de Inteligencia Artificial Simbólica (Rule-Based) especializado en Karate-do. 
-* **Arquitectura:** Modular, desacoplada y basada en principios de Ingeniería de Software.
-* **Core:** Procesamiento de Lenguaje Natural (NLP) local y motor de inferencia con scoring determinista.
-* **Misión:** Digitalizar el conocimiento marcial con precisión técnica absoluta.
+## 🤖 Perfil Profesional e Identidad Digital
+Soy **Gustavo Martínez**, también conocido como **GCG-13**. Como Ingeniero de Software y Arquitecto de IA, mi trabajo se centra en el puente entre el desarrollo robusto y la **Inteligencia Artificial Simbólica (Rule-Based AI)**. Mi enfoque principal es la **XAI (IA Explicable)**: crear sistemas donde cada decisión algorítmica sea rastreable, lógica y determinista.
 
-## 🏢 Sobre mí (About Me)
+- 🧠 **Fundador de GCG-13**: Lidero el desarrollo de arquitecturas modulares para sistemas expertos.
+- 🏛️ **Harvard CS50 Alumni**: Formación profunda en fundamentos de computación, gestión de memoria y optimización de algoritmos.
+- 🥋 **Creador de Sensei IA**: Un motor de inferencia especializado en la digitalización del conocimiento táctico.
 
-* 👨‍💻 **Founder & Lead Developer** de la iniciativa GCG-13.
-* 🎓 **CS50 Harvard Certified:** Bases sólidas en estructuras de datos, gestión de memoria y algoritmos.
-* 🥋 **AI Architect:** Especialista en sistemas expertos que funcionan 100% offline y con baja latencia.
-* ⚡ **Product Engineer:** Enfoque en crear código escalable, testeado (Vitest) y documentado (JSDoc).
+---
 
-## 🛠️ Tecnologías (Tech Stack)
+## 🚀 Proyectos de Autoridad (Current Focus)
 
-| Categoría | Tecnologías |
+### [Sensei-1.0 Engine](https://github.com/GCG-13/Sensei-1.0-engine) | `Symbolic AI` `NLP` `Expert Systems`
+Es mi proyecto insignia bajo la marca **Sensei IA por GCG-13**. Es un motor de Inteligencia Artificial que no depende de "cajas negras", sino de una **arquitectura de lógica determinista**.
+- **Lógica de Inferencia**: Implementación de scoring basado en reglas para pedagogía marcial.
+- **NLP Local**: Procesamiento semántico sin dependencia de APIs externas, garantizando privacidad y baja latencia.
+- **Algoritmia**: Uso avanzado de *Levenshtein Distance* y búsqueda difusa (*Fuzzy Search*) para interpretación de comandos.
+
+### [GCG Store Digital](https://github.com/GCG-13/GCG-Store-Digital) | `PWA` `Firebase` `Cloud Architecture`
+Marketplace optimizado como Progressive Web App. Enfocado en la **escalabilidad** y la experiencia de usuario (*UX*) mediante persistencia de datos en tiempo real.
+
+---
+
+## 🛠️ Stack Tecnológico (Indexed by Domain)
+
+| Dominio | Tecnologías y Conceptos Clave |
 | :--- | :--- |
-| **Frontend & UX** | HTML5, Tailwind CSS, JavaScript (ES6+), TypeScript |
-| **Logic & AI** | Symbolic AI, NLP, Inferences Engines, Levenshtein Algorithms |
-| **Tools & Cloud** | Git, GitHub, Vite, Netlify, Firebase, Vitest |
-| **Game Dev** | Lua (Roblox Engine) |
+| **Artificial Intelligence** | **Symbolic AI**, **Explainable AI (XAI)**, Inference Engines, Rule-Based Systems, NLP. |
+| **Engineering** | **SOLID**, Clean Architecture, Vitest (TDD), JSDoc, Git/GitHub Flow. |
+| **Frontend & PWA** | TypeScript, Tailwind CSS, Vite, Firebase SDK. |
+| **Low Level & Logic** | C (Harvard CS50), Lua (Deterministic Logic), Python. |
 
-## 📁 Proyectos Destacados (Featured Projects)
+---
 
-### [Sensei AI Core (Sensei-1.0)](https://github.com/GCG-13/Sensei-1.0-engine)
-**Motor de IA Experta.** Sistema modular con lógica de inferencia pedagógica para artes marciales. Implementa búsqueda difusa (fuzzy search) y procesamiento semántico local.
+## 📜 Certificaciones Verificadas
+* **Harvard University**: CS50's Introduction to Computer Science (Foundations).
+* **Big School**: AI Development (Generación 2026) - IA Generativa & Agentes.
+* **Platzi**: Machine Learning, Ingeniería de Software, Git & GitHub Profesional.
 
-### [GCG Store Digital](https://github.com/GCG-13/GCG-Store-Digital.git)
-**Marketplace PWA.** Aplicación web progresiva integrada con Firebase para la gestión de artículos digitales en tiempo real.
+---
 
-## 📊 GitHub Stats
-![Gustavo's GitHub stats](https://github-readme-stats.vercel.app/api?username=GCG-13&show_icons=true&theme=tokyonight)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=GCG-13&layout=compact&theme=tokyonight)
+## 🌐 Conecta con el Ecosistema GCG-13
+* **Portfolio Oficial:** [gcg13curriculum.netlify.app](https://gcg13curriculum.netlify.app/)
+* **LinkedIn:** [Gustavo Alberto Martínez Parra](tu-link-aqui)
+* **Email:** gcg13games@gmail.com
 
-## 🏆 Certificaciones (Certifications)
-* **Harvard University:** CS50's Introduction to Computer Science.
-* **Platzi:** Ingeniería de Software, Machine Learning, Git & GitHub Profesional.
-* **Big School:** Desarrollo con IA (Generación 2026).
+---
 
-
-## 📫 Contacto (Connect with me)
-* 🌐 **Portfolio:** [gcg13curriculum.netlify.app](https://gcg13curriculum.netlify.app)
-* 📧 **Email:** gcg13games@gmail.com
-* 💬 **WhatsApp:** [+58 426-2171291](https://wa.me/584262171291)
-
-> *"The best way to predict the future is to invent it."*
+> "En un mundo de cajas negras, la IA Simbólica es la luz de la transparencia algorítmica." — **GCG-13**
