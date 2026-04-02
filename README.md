@@ -45,3 +45,19 @@ Marketplace optimizado como Progressive Web App. Enfocado en la **escalabilidad*
 * **Email:** gcg13games@gmail.com
 
 > "En un mundo de cajas negras, la IA Simbólica es la luz de la transparencia algorítmica." — **GCG-13**
+
+## 📚 Citation
+
+If you use this software in your research, project, or publication, please cite it using the following BibTeX entry:
+
+```bibtex
+@software{martinez_sensei_2026,
+  author = {Martínez Parra, Gustavo Alberto (GCG-13)},
+  title = {Sensei 1.0: Symbolic AI Engine for Martial Arts},
+  month = {April},
+  year = {2026},
+  publisher = {GitHub},
+  version = {1.0.0},
+  url = {[https://github.com/GCG-13/Sensei-1.0-engine](https://github.com/GCG-13/Sensei-1.0-engine)}
+}
+
