@@ -41,7 +41,7 @@ Marketplace optimizado como Progressive Web App. Enfocado en la **escalabilidad*
 
 ## 🌐 Conecta con el Ecosistema GCG-13
 * **Portfolio Oficial:** [gcg13curriculum.netlify.app](https://gcg13curriculum.netlify.app/)
-* **LinkedIn:** [Gustavo Alberto Martínez Parra](tu-link-aqui)
+* **Nodi:** [Gustavo Alberto Martínez Parra](https://nodi.global/profile/0562043f-d72d-4226-89c7-dd75c54a8dda)
 * **Email:** gcg13games@gmail.com
 
 > "En un mundo de cajas negras, la IA Simbólica es la luz de la transparencia algorítmica." — **GCG-13**
