@@ -3,177 +3,1584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GCG-13 | Portfolio & CV</title>
+    <title>GCG-13 | Software Engineer & AI Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f172a; color: #f8fafc; }
+        body { background-color: #0f172a; color: #f8fafc; scroll-behavior: smooth; overflow-x: hidden; }
         .gradient-text {
             background: linear-gradient(90deg, #38bdf8, #818cf8);
-            background-clip: text; /* estándar */
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .card { background-color: #1e293b; border: 1px solid #334155; }
-        /* Animación suave para el letrero */
-        #language-modal { transition: opacity 0.5s ease; }
+        .card { background-color: #1e293b; border: 1px solid #334155; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+        .tech-badge { 
+            background: linear-gradient(135deg, #1e293b, #334155); 
+            border: 1px solid #475569; 
+            padding: 4px 12px; 
+            border-radius: 12px; 
+            font-size: 12px; 
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .tech-badge:hover { 
+            border-color: #38bdf8; 
+            transform: scale(1.05);
+        }
+        
+        /* Estilos de Estadísticas */
+        .stat-card {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .stat-card:hover::before {
+            left: 100%;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Estilos de Servicios */
+        .service-card {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .service-card:hover::before {
+            left: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .service-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .service-features li::before {
+            content: '✓';
+            color: #38bdf8;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        /* Estilos de Proceso de Trabajo */
+        .process-step {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .process-step:hover::before {
+            left: 100%;
+        }
+        .process-step:hover {
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+        }
+        .process-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .process-connector {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, #38bdf8, transparent);
+            margin: 0 auto;
+        }
+        
+        /* Animaciones y Micro-interacciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Clases de animación */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.6s ease-out forwards;
+        }
+        
+        .animate-fadeInRight {
+            animation: fadeInRight 0.6s ease-out forwards;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .animate-slideInFromTop {
+            animation: slideInFromTop 0.8s ease-out forwards;
+        }
+        
+        /* Efectos hover mejorados */
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: #38bdf8;
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        /* Animaciones para estadísticas */
+        .stat-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-6px) scale(1.05);
+            border-color: #38bdf8;
+        }
+        
+        .stat-number {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover .stat-number {
+            transform: scale(1.1);
+            color: #38bdf8;
+        }
+        
+        /* Animaciones para proceso de trabajo */
+        .process-step {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .process-step:hover {
+            transform: scale(1.05);
+            border-color: #38bdf8;
+        }
+        
+        .process-number {
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .process-number {
+            transform: scale(1.2);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+        }
+        
+        /* Animaciones para blog */
+        article {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        article:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+        }
+        
+        article:hover .text-2xl {
+            transform: scale(1.1);
+        }
+        
+        /* Animaciones para sección "Por qué elegirte" */
+        #why-choose .card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #why-choose .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #38bdf8;
+        }
+        
+        #why-choose .card:hover .svg {
+            transform: rotate(360deg);
+            transition: transform 0.6s ease;
+        }
+        
+        /* Estilos para Certificaciones */
+        .certification-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.05), transparent);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+        
+        .certification-card:hover::before {
+            left: 100%;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .certification-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .certification-card:hover .certification-icon {
+            transform: scale(1.1);
+        }
+        
+        .certification-card:hover .certification-icon svg {
+            transform: rotate(10deg) scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Efecto de brillo para certificaciones */
+        .certification-card:hover {
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animación para placeholder de certificación */
+        .certification-card.border-dashed {
+            border-style: dashed;
+            animation: dashAnimation 3s ease-in-out infinite;
+        }
+        
+        @keyframes dashAnimation {
+            0%, 100% {
+                border-color: rgba(148, 163, 184, 0.2);
+            }
+            50% {
+                border-color: rgba(250, 204, 21, 0.4);
+            }
+        }
+        
+        /* Efectos especiales para enlaces de certificaciones */
+        .certification-card a {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .certification-card a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: translateY(-50%);
+            transition: left 0.3s ease;
+        }
+        
+        .certification-card a:hover::before {
+            left: 0;
+        }
+        
+        /* Animaciones para botones */
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            white-space: normal;
+            word-spacing: normal;
+            font-size: clamp(1.5rem, 4vw, 3.75rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        @media (max-width: 768px) {
+            .gradient-text {
+                font-size: clamp(1.25rem, 6vw, 2rem);
+                line-height: 1.2;
+                letter-spacing: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gradient-text {
+                font-size: clamp(1.1rem, 8vw, 1.5rem);
+                line-height: 1.3;
+                letter-spacing: 0.01em;
+            }
+        }
+        
+        .gradient-text:hover {
+            background: linear-gradient(135deg, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Animaciones para enlaces */
+        a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: width 0.3s ease;
+        }
+        
+        a:hover::after {
+            width: 100%;
+        }
+        
+        /* Animaciones para badges */
+        .tech-badge {
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+        
+        .tech-badge:hover {
+            transform: scale(1.1);
+            background: #38bdf8;
+            color: white;
+        }
+        
+        /* Animaciones para terminal */
+        .terminal-window {
+            transition: all 0.3s ease;
+        }
+        
+        .terminal-window:hover {
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+        }
+        
+        /* Animaciones de entrada escalonadas */
+        .stagger-animation > * {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+        .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+        .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Animaciones de scroll */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Estilos de la Terminal */
+        .terminal-window {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .terminal-header { background: #1e293b; border-bottom: 1px solid #334155; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        .cursor { display: inline-block; width: 8px; height: 18px; background: #38bdf8; animation: blink 1s infinite; vertical-align: middle; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        
+        #terminal-content::-webkit-scrollbar { width: 6px; }
+        #terminal-content::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     </style>
     <link rel="icon" href="icon/favicon.png" type="image/png">
 </head>
 <body class="font-sans antialiased">
 
-    <!-- modal de selección lingüística, con atributos ARIA para accesibilidad -->
-    <div id="language-modal" role="dialog" aria-modal="true" aria-labelledby="lang-modal-title" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
-        <div class="text-center p-8 card rounded-2xl max-w-sm w-full mx-4 shadow-2xl">
-            <h2 id="lang-modal-title" class="text-2xl font-bold mb-6">Select Language / Selecciona Idioma</h2>
+    <!-- Modal de Selección de Idioma -->
+    <div id="language-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="card p-8 rounded-2xl max-w-sm w-full text-center mx-4">
+            <h2 class="text-2xl font-bold mb-6">Select Language<br><span class="text-slate-400 text-lg">Selecciona tu idioma</span></h2>
             <div class="flex flex-col gap-4">
-                <button type="button" onclick="setLanguage('es')" class="bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition transform hover:scale-105">Español</button>
-                <button type="button" onclick="setLanguage('en')" class="border border-slate-600 hover:bg-slate-800 py-3 rounded-xl font-bold transition transform hover:scale-105">English</button>
+                <button onclick="setLanguage('en')" class="bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition">🇬🇧 English</button>
+                <button onclick="setLanguage('es')" class="border border-slate-600 hover:bg-slate-700 py-3 rounded-xl font-bold transition">🇪🇸 Español</button>
             </div>
         </div>
     </div>
 
-    <header class="max-w-4xl mx-auto pt-20 px-6 text-center">
-        <!-- botón de idioma persistente -->
-        <div class="absolute top-4 right-4">
-            <button id="btn-lang-toggle" type="button" class="text-sm text-slate-400 hover:text-white" onclick="showLanguageModal()">🌐</button>
-        </div>
-        <h1 class="text-5xl font-extrabold mb-4"><span id="txt-hero-greet">Soy</span> <span class="gradient-text">GCG-13</span></h1>
-        <p id="txt-hero-desc" class="text-xl text-slate-400 mb-8">Lead Developer | Founder of GCG-13 | CS50 Certified</p>
-        <div class="flex justify-center gap-4">
-            <a href="https://github.com/GCG-13" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full font-bold transition">GitHub</a>
-            <a href="#contacto" id="btn-contact" class="border border-slate-600 hover:bg-slate-800 px-6 py-2 rounded-full font-bold transition">Contacto</a>
-        </div>
+    <!-- Botón Flotante de Idioma -->
+    <button onclick="showLanguageModal()" class="fixed top-4 right-4 z-40 bg-slate-800 border border-slate-600 hover:bg-slate-700 p-2 rounded-full transition"> </button>
+
+    <!-- Hero Section -->
+    <header class="max-w-4xl mx-auto pt-24 px-6 text-center animate-slideInFromTop">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-4"><span id="txt-hero-greet" class="animate-fadeInLeft">Soy</span> <span class="gradient-text animate-pulse">Gustavo&nbsp;Alberto&nbsp;Martínez&nbsp;Parra</span></h1>
+        <p id="txt-hero-desc" class="text-xl md:text-2xl text-slate-400 mb-8 animate-fadeInRight">AI Architect | Software Engineer | Founder of GCG-13</p>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-16">
-        
-        <section class="mb-16">
-            <h2 id="txt-about-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Sobre mí</h2>
-            <p id="txt-about-p" class="text-slate-300 leading-relaxed">
-                Desarrollador enfocado en la creación de soluciones eficientes. Fundador de <strong>GCG-13</strong>, 
-                donde lidero el desarrollo de aplicaciones web modernas (PWA) y motores de lógica propia. 
-                Mi enfoque combina la rigurosidad algorítmica de <strong>Harvard CS50</strong> con la agilidad 
-                de las herramientas de IA más modernas del 2026.
+    <!-- TERMINAL INTERACTIVA -->
+    <section class="max-w-4xl mx-auto px-6 mb-16 animate-fadeInUp">
+        <div class="terminal-window rounded-xl overflow-hidden">
+            <div class="terminal-header px-4 py-2 flex items-center justify-between">
+                <div class="flex gap-2">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                </div>
+                <span class="text-xs text-slate-500 font-mono">gcg13@sensei-core: ~/home</span>
+                <div class="w-12"></div>
+            </div>
+            <div id="terminal-content" class="p-6 h-80 overflow-y-auto font-mono text-sm md:text-base text-blue-300 leading-relaxed">
+                <div id="terminal-history">
+                    <p class="text-slate-500 italic mb-2">[System Engine v1.0.4 - Booting...]</p>
+                    <p class="text-green-400 mb-4"> GCG-13 Core Online. Harvard CS50 Modules Loaded.</p>
+                </div>
+                <div class="flex">
+                    <span class="text-blue-500 mr-2">guest@gcg13:~$</span>
+                    <input type="text" id="terminal-input" class="bg-transparent border-none outline-none flex-1 text-white" autofocus spellcheck="false">
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-xs text-slate-500 mt-4 font-mono">Tip: Escribe <span class="text-blue-400 font-bold">help</span> para ver los comandos disponibles.</p>
+    </section>
+
+    <main class="max-w-4xl mx-auto px-6 py-8">
+        <!-- About Me Section -->
+        <section class="mb-16 scroll-reveal">
+            <h2 id="txt-about-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit pb-2">Sobre mí</h2>
+            <p id="txt-about-p" class="text-slate-300 leading-relaxed text-lg italic">
+                Ingeniero de Software enfocado en la construcción de sistemas expertos. Como fundador de <strong>GCG-13</strong>, desarrollo arquitecturas modulares y motores de IA simbólica.
             </p>
         </section>
 
-        <section class="mb-16">
-            <h2 id="txt-projects-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Proyectos Destacados</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="card p-6 rounded-xl">
-                    <h3 class="text-xl font-bold mb-2 text-blue-400">GCG Store Digital</h3>
-                    <p id="txt-proj-store" class="text-sm text-slate-400 mb-4">Marketplace de artículos digitales con Firebase y PWA.</p>
-                    <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">Firebase</span>
-                    <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">PWA</span>
+        <!-- Tech Stack -->
+        <section class="mb-16 scroll-reveal">
+            <h2 id="txt-tech-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit pb-2">Habilidades Técnicas</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-animation">
+                <div class="card p-4 rounded-xl text-center">
+                    <h3 id="txt-tech-logic" class="font-bold text-blue-400 mb-2">Logic & AI</h3>
+                    <div class="text-xs text-slate-300 space-y-1"><span>Symbolic AI</span><br><span>NLP Local</span><br><span>Fuzzy Matching</span></div>
                 </div>
-                <div class="card p-6 rounded-xl">
-                    <h3 class="text-xl font-bold mb-2 text-blue-400">Custom AI Engine</h3>
-                    <p id="txt-proj-ai" class="text-sm text-slate-400 mb-4">Motor de lógica NLP basado en reglas para asistencia técnica sin APIs externas.</p>
-                    <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">JavaScript</span>
-                    <span class="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">NLP</span>
+                <div class="card p-4 rounded-xl text-center">
+                    <h3 id="txt-tech-frontend" class="font-bold text-blue-400 mb-2">Frontend</h3>
+                    <div class="text-xs text-slate-300 space-y-1"><span>TypeScript</span><br><span>Tailwind CSS</span><br><span>Vite</span></div>
+                </div>
+                <div class="card p-4 rounded-xl text-center">
+                    <h3 id="txt-tech-tools" class="font-bold text-blue-400 mb-2">Tools</h3>
+                    <div class="text-xs text-slate-300 space-y-1"><span>Git / GitHub</span><br><span>Firebase</span><br><span>Netlify</span></div>
+                </div>
+                <div class="card p-4 rounded-xl text-center">
+                    <h3 id="txt-tech-gamedev" class="font-bold text-blue-400 mb-2">Game Dev</h3>
+                    <div class="text-xs text-slate-300 space-y-1"><span>Lua Scripting</span><br><span>Roblox Engine</span></div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 id="txt-edu-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit">Formación & Certificados</h2>
-            <ul class="space-y-4 text-slate-300">
-                <li class="flex items-start">
-                    <span class="text-blue-500 mr-2">✔</span>
-                    <div><strong id="txt-edu-1">CS50's Introduction to Computer Science</strong> - Harvard University</div>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-blue-500 mr-2">✔</span>
-                    <div><strong id="txt-edu-2">Desarrollo con IA 2026</strong> - Big School</div>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-blue-500 mr-2">✔</span>
-                    <div><strong id="txt-edu-3">Especialización en Git, GitHub y Machine Learning</strong> - Platzi</div>
-                </li>
-            </ul>
+        <!-- Projects Section -->
+        <section id="proyectos" class="mb-16 scroll-reveal">
+            <h2 id="txt-projects-title" class="text-2xl font-bold mb-6 border-b border-blue-500 w-fit pb-2">Proyectos Destacados</h2>
+            <div class="grid md:grid-cols-2 gap-6 stagger-animation">
+                <div class="card p-6 rounded-xl border-t-4 border-blue-500">
+                    <h3 class="text-xl font-bold mb-2 text-blue-400">Sensei-1.0 Engine </h3>
+                    <p id="txt-proj1-desc" class="text-sm text-slate-400 mb-4 h-20">Motor de Inteligencia Artificial Simbólica para Karate-do. Lógica de inferencia determinista.</p>
+                    <a href="https://github.com/GCG-13/Sensei-1.0-engine" target="_blank" class="inline-flex items-center text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded">Ver Repositorio →</a>
+                </div>
+                <div class="card p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-2 text-blue-400">GCG Store Digital </h3>
+                    <p id="txt-proj2-desc" class="text-sm text-slate-400 mb-4 h-20">Marketplace de artículos digitales optimizado como PWA con Firebase.</p>
+                    <a href="https://github.com/GCG-13/GCG-Store-Digital.git" target="_blank" id="txt-proj1-link" class="inline-flex items-center text-sm font-bold text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded transition">Ver Repositorio →</a>
+                </div>
+            </div>
         </section>
 
+        <!-- Habilidades Técnicas (Basado en la imagen) -->
+        <section id="skills" class="max-w-5xl mx-auto px-6 mb-24 scroll-reveal">
+            <h2 id="txt-skills-title" class="text-3xl font-bold mb-12 text-center">Tecnologías & Herramientas</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-animation">
+                <!-- Frontend -->
+                <div class="card p-6 rounded-2xl flex flex-col gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-blue-500/10 rounded-lg text-blue-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-lg">Frontend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-badge"><span>HTML5</span></div>
+                        <div class="tech-badge"><span>CSS3</span></div>
+                        <div class="tech-badge"><span>Tailwind</span></div>
+                        <div class="tech-badge"><span>TypeScript</span></div>
+                        <div class="tech-badge"><span>Vite</span></div>
+                    </div>
+                </div>
+
+                <!-- Backend & Data -->
+                <div class="card p-6 rounded-2xl flex flex-col gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-purple-500/10 rounded-lg text-purple-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-lg">Backend</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-badge"><span>Firebase</span></div>
+                        <div class="tech-badge"><span>Firestore</span></div>
+                        <div class="tech-badge"><span>Netlify</span></div>
+                        <div class="tech-badge"><span>Lua</span></div>
+                    </div>
+                </div>
+
+                <!-- AI & Logic -->
+                <div class="card p-6 rounded-2xl flex flex-col gap-6 border-blue-500/30">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-cyan-500/10 rounded-lg text-cyan-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-cyan-400">AI / Logic</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-badge"><span>Symbolic AI</span></div>
+                        <div class="tech-badge"><span>NLP</span></div>
+                        <div class="tech-badge"><span>Fuzzy Logic</span></div>
+                        <div class="tech-badge"><span>Expert Systems</span></div>
+                    </div>
+                </div>
+
+                <!-- Development -->
+                <div class="card p-6 rounded-2xl flex flex-col gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-green-500/10 rounded-lg text-green-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-lg">Dev Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="tech-badge"><span>Git</span></div>
+                        <div class="tech-badge"><span>GitHub</span></div>
+                        <div class="tech-badge"><span>VSC</span></div>
+                        <div class="tech-badge"><span>Terminal</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas Section -->
+        <section id="stats" class="max-w-5xl mx-auto px-6 mb-24">
+            <h2 id="txt-stats-title" class="text-3xl font-bold mb-12 text-center">Impacto & Resultados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card p-6 rounded-2xl text-center">
+                    <div class="stat-number mb-2">5</div>
+                    <div class="stat-label" id="txt-stats-years">Años de Experiencia</div>
+                </div>
+                
+                <div class="stat-card p-6 rounded-2xl text-center">
+                    <div class="stat-number mb-2">5</div>
+                    <div class="stat-label" id="txt-stats-projects">Proyectos Completados</div>
+                </div>
+                
+                <div class="stat-card p-6 rounded-2xl text-center">
+                    <div class="stat-number mb-2">50K+</div>
+                    <div class="stat-label" id="txt-stats-code">Líneas de Código</div>
+                </div>
+                
+                <div class="stat-card p-6 rounded-2xl text-center">
+                    <div class="stat-number mb-2">85%</div>
+                    <div class="stat-label" id="txt-stats-nlp">Precisión NLP</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios Section -->
+        <section id="services" class="max-w-5xl mx-auto px-6 mb-24">
+            <h2 id="txt-services-title" class="text-3xl font-bold mb-12 text-center">Servicios Profesionales</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1: Desarrollo Web -->
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="service-icon mb-6">🌐</div>
+                    <h3 id="txt-service1-title" class="service-title mb-4">Desarrollo Web</h3>
+                    <p id="txt-service1-desc" class="service-description mb-6">
+                        Sitios web modernos, rápidos y responsivos con las últimas tecnologías.
+                    </p>
+                    <ul class="service-features">
+                        <li id="txt-service1-f1">React/Vue/Angular</li>
+                        <li id="txt-service1-f2">Diseño Responsive</li>
+                        <li id="txt-service1-f3">Optimización SEO</li>
+                        <li id="txt-service1-f4">PWA Ready</li>
+                    </ul>
+                </div>
+                
+                <!-- Servicio 2: Inteligencia Artificial -->
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="service-icon mb-6">🤖</div>
+                    <h3 id="txt-service2-title" class="service-title mb-4">Inteligencia Artificial</h3>
+                    <p id="txt-service2-desc" class="service-description mb-6">
+                        Motores de IA personalizados, NLP y sistemas expertos para automatizar procesos.
+                    </p>
+                    <ul class="service-features">
+                        <li id="txt-service2-f1">Symbolic AI</li>
+                        <li id="txt-service2-f2">Procesamiento NLP</li>
+                        <li id="txt-service2-f3">Machine Learning</li>
+                        <li id="txt-service2-f4">Sistemas Expertos</li>
+                    </ul>
+                </div>
+                
+                <!-- Servicio 3: Consultoría Técnica -->
+                <div class="service-card p-8 rounded-2xl">
+                    <div class="service-icon mb-6">💡</div>
+                    <h3 id="txt-service3-title" class="service-title mb-4">Consultoría Técnica</h3>
+                    <p id="txt-service3-desc" class="service-description mb-6">
+                        Asesoramiento especializado en arquitectura de software y mejores prácticas.
+                    </p>
+                    <ul class="service-features">
+                        <li id="txt-service3-f1">Arquitectura de Sistemas</li>
+                        <li id="txt-service3-f2">Code Review</li>
+                        <li id="txt-service3-f3">Optimización Rendimiento</li>
+                        <li id="txt-service3-f4">Mentoring Técnico</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proceso de Trabajo Section -->
+        <section id="process" class="max-w-5xl mx-auto px-6 mb-24">
+            <h2 id="txt-process-title" class="text-3xl font-bold mb-12 text-center">Mi Proceso de Trabajo</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Paso 1 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="process-number mb-4">1</div>
+                    <div class="process-step p-6 rounded-2xl flex-1">
+                        <h3 id="txt-process-step1" class="font-bold text-lg mb-3 text-blue-400">Descubrimiento</h3>
+                        <p id="txt-process-desc1" class="text-slate-300 text-sm leading-relaxed">
+                            Análisis profundo de requisitos y objetivos del proyecto para entender completamente las necesidades.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Paso 2 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="process-number mb-4">2</div>
+                    <div class="process-step p-6 rounded-2xl flex-1">
+                        <h3 id="txt-process-step2" class="font-bold text-lg mb-3 text-purple-400">Diseño</h3>
+                        <p id="txt-process-desc2" class="text-slate-300 text-sm leading-relaxed">
+                            Arquitectura modular y planificación técnica con diagramas y prototipos funcionales.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Paso 3 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="process-number mb-4">3</div>
+                    <div class="process-step p-6 rounded-2xl flex-1">
+                        <h3 id="txt-process-step3" class="font-bold text-lg mb-3 text-cyan-400">Desarrollo</h3>
+                        <p id="txt-process-desc3" class="text-slate-300 text-sm leading-relaxed">
+                            Implementación ágil con código limpio, pruebas continuas y revisión constante.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Paso 4 -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="process-number mb-4">4</div>
+                    <div class="process-step p-6 rounded-2xl flex-1">
+                        <h3 id="txt-process-step4" class="font-bold text-lg mb-3 text-green-400">Entrega</h3>
+                        <p id="txt-process-desc4" class="text-slate-300 text-sm leading-relaxed">
+                            Despliegue final, documentación completa y soporte post-lanzamiento garantizado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog/Artículos Section -->
+        <section id="blog" class="max-w-5xl mx-auto px-6 mb-24">
+            <h2 id="txt-blog-title" class="text-3xl font-bold mb-12 text-center">Blog Técnico</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artículo 1: IA Simbólica -->
+                <article class="card p-6 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl">🧠</span>
+                        <div class="flex-1">
+                            <h3 id="txt-blog1-title" class="text-xl font-bold text-blue-400 mb-2">IA Simbólica vs Machine Learning</h3>
+                            <p id="txt-blog1-date" class="text-sm text-slate-500 mb-2">15 Marzo 2026</p>
+                        </div>
+                    </div>
+                    <p id="txt-blog1-desc" class="text-slate-300 leading-relaxed mb-4">
+                        Explorando las diferencias fundamentales entre la IA simbólica tradicional y el enfoque moderno de machine learning. Cuándo usar cada enfoque y por qué la IA determinista sigue siendo relevante en sistemas críticos.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge text-xs">IA Simbólica</span>
+                        <span class="tech-badge text-xs">Machine Learning</span>
+                        <span class="tech-badge text-xs">Sistemas Expertos</span>
+                    </div>
+                </article>
+
+                <!-- Artículo 2: Arquitectura de Software -->
+                <article class="card p-6 rounded-2xl hover:border-purple-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl">🏗️</span>
+                        <div class="flex-1">
+                            <h3 id="txt-blog2-title" class="text-xl font-bold text-purple-400 mb-2">Patrones de Arquitectura Hexagonal</h3>
+                            <p id="txt-blog2-date" class="text-sm text-slate-500 mb-2">10 Marzo 2026</p>
+                        </div>
+                    </div>
+                    <p id="txt-blog2-desc" class="text-slate-300 leading-relaxed mb-4">
+                        Análisis profundo de la arquitectura hexagonal y su aplicación en sistemas distribuidos modernos. Cómo este patrón resuelve problemas de escalabilidad y consistencia que las arquitecturas tradicionales no pueden abordar.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge text-xs">Arquitectura</span>
+                        <span class="tech-badge text-xs">Sistemas Distribuidos</span>
+                        <span class="tech-badge text-xs">Microservicios</span>
+                    </div>
+                </article>
+
+                <!-- Artículo 3: Desarrollo Frontend -->
+                <article class="card p-6 rounded-2xl hover:border-cyan-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl">⚛️</span>
+                        <div class="flex-1">
+                            <h3 id="txt-blog3-title" class="text-xl font-bold text-cyan-400 mb-2">Optimización de Renderizado en React</h3>
+                            <p id="txt-blog3-date" class="text-sm text-slate-500 mb-2">5 Marzo 2026</p>
+                        </div>
+                    </div>
+                    <p id="txt-blog3-desc" class="text-slate-300 leading-relaxed mb-4">
+                        Técnicas avanzadas de optimización de renderizado en aplicaciones React. Desde virtualización eficiente hasta estrategias de memoización que pueden mejorar el rendimiento hasta en 60% en aplicaciones complejas.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge text-xs">React</span>
+                        <span class="tech-badge text-xs">Performance</span>
+                        <span class="tech-badge text-xs">Virtual DOM</span>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Botón para ver más artículos -->
+            <div class="text-center mt-12">
+                <a href="#" id="txt-blog-link" class="inline-flex items-center text-blue-400 hover:text-blue-300 font-bold transition">
+                    Ver todos los artículos →
+                </a>
+            </div>
+        </section>
+
+        <!-- Por qué elegirte Section -->
+        <section id="why-choose" class="max-w-5xl mx-auto px-6 mb-24">
+            <h2 id="txt-why-title" class="text-3xl font-bold mb-12 text-center">Por Qué Elegirme</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Diferenciador 1: Enfoque en IA Determinista -->
+                <div class="card p-8 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-blue-500/10 rounded-full text-blue-400">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 15.141a1 1 0 0-1.414 1.414h6.933a1 1 0 0 1.414 1.414v6.933a1 1 0 0 1.414-1.414h-6.933a1 1 0 0-1.414-1.414z"></path></svg>
+                        </div>
+                        <h3 id="txt-why1-title" class="text-xl font-bold text-blue-400">IA Determinista</h3>
+                    </div>
+                    <p id="txt-why1-desc" class="text-slate-300 leading-relaxed mb-6">
+                        A diferencia del machine learning opaco, mis sistemas de IA basados en reglas son 100% predecibles y auditables. Cada decisión tiene una lógica clara y verificable, ideal para sistemas críticos donde la consistencia es más importante que la probabilidad.
+                    </p>
+                    <ul class="space-y-3">
+                        <li id="txt-why1-f1" class="flex items-start gap-3">
+                            <span class="text-green-400 text-xl mr-2">✓</span>
+                            <span class="text-slate-300">100% Predecible y Auditible</span>
+                        </li>
+                        <li id="txt-why1-f2" class="flex items-start gap-3">
+                            <span class="text-green-400 text-xl mr-2">✓</span>
+                            <span class="text-slate-300">Cero "Black Box" - Todo el código es transparente</span>
+                        </li>
+                        <li id="txt-why1-f3" class="flex items-start gap-3">
+                            <span class="text-green-400 text-xl mr-2">✓</span>
+                            <span class="text-slate-300">Ideal para Sistemas Críticos</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Diferenciador 2: Arquitectura Hexagonal -->
+                <div class="card p-8 rounded-2xl hover:border-purple-500/30 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-purple-500/10 rounded-full text-purple-400">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L17.57 9.27 1.415 1.414L12 2z"></path></svg>
+                        </div>
+                        <h3 id="txt-why2-title" class="text-xl font-bold text-purple-400">Arquitectura Hexagonal</h3>
+                    </div>
+                    <p id="txt-why2-desc" class="text-slate-300 leading-relaxed mb-6">
+                        Patrones de arquitectura hexagonal resuelven problemas fundamentales de escalabilidad y consistencia. A diferencia de las arquitecturas monolíticas tradicionales, este enfoque garantiza mantenibilidad y evolución del sistema a largo plazo.
+                    </p>
+                    <ul class="space-y-3">
+                        <li id="txt-why2-f1" class="flex items-start gap-3">
+                            <span class="text-purple-400 text-xl mr-2">✓</span>
+                            <span class="text-slate-300">Escalabilidad Ilimitada</span>
+                        </li>
+                        <li id="txt-why2-f2" class="flex items-start gap-3">
+                            <span class="text-purple-400 text-xl mr-2">✓</span>
+                            <span class="text-slate-300">Bajo Acoplamiento</span>
+                        </li>
+                        <li id="txt-why2-f3" class="flex items-start gap-3">
+                            <span class="text-purple-400 text-xl mr-2">✓</span>
+                            <span class="text-slate-300">Evolución Sostenible</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA Final -->
+            <div class="text-center mt-12">
+                <p id="txt-why-cta" class="text-lg text-slate-300 mb-4">
+                    La combinación de IA determinista con arquitectura hexagonal crea soluciones robustas, predecibles y escalables que la mayoría de los desarrolladores no pueden ofrecer.
+                </p>
+                <a href="#contacto" id="txt-why-contact" class="inline-flex items-center text-blue-400 hover:text-blue-300 font-bold text-lg transition">
+                    Hablemos de tu proyecto →
+                </a>
+            </div>
+        </section>
+        
     </main>
 
-    <footer id="contacto" class="bg-slate-900 py-10 text-center">
-        <p id="txt-footer" class="text-slate-500 mb-2">¿Listo para construir el futuro?</p>
-        <p class="font-bold">gcg13games@gmail.com</p>
+    <!-- Certificaciones Section -->
+    <section id="certifications" class="max-w-5xl mx-auto px-6 mb-24 scroll-reveal">
+        <h2 id="txt-certifications-title" class="text-3xl font-bold mb-12 text-center">Certificaciones Profesionales</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 stagger-animation">
+            <!-- CS50 Harvard -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-red-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-red-500/10 rounded-full flex items-center justify-center group-hover:bg-red-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-red-400">CS50</h3>
+                <p class="text-xs text-slate-400 mb-3">Harvard University</p>
+                <a href="certificados/CS50.pdf" target="_blank" class="inline-flex items-center text-xs text-red-400 hover:text-red-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Claude Code -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-orange-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-orange-500/10 rounded-full flex items-center justify-center group-hover:bg-orange-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-orange-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9.5 2A2.5 2.5 0 007 4.5v.793c.526-.143 1.07-.243 1.631-.293.653-.058 1.309-.034 1.936.12V4.5A2.5 2.5 0 008.5 2h1zm0 2A1.5 1.5 0 0111 5.5v.577a8.532 8.532 0 00-1.631-.293A8.532 8.532 0 008 5.577V5.5A1.5 1.5 0 019.5 4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4zm-5.2 0l-4.6-4.6 4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-orange-400">Claude Code</h3>
+                <p class="text-xs text-slate-400 mb-3">Anthropic</p>
+                <a href="certificados/CLAUDE CODE.pdf" target="_blank" class="inline-flex items-center text-xs text-orange-400 hover:text-orange-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Git & GitHub -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-gray-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-gray-500/10 rounded-full flex items-center justify-center group-hover:bg-gray-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-gray-400">Git & GitHub</h3>
+                <p class="text-xs text-slate-400 mb-3">Version Control</p>
+                <a href="certificados/GIT Y GITHUB.pdf" target="_blank" class="inline-flex items-center text-xs text-gray-400 hover:text-gray-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Prompt Engineering -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-purple-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center group-hover:bg-purple-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-purple-400">Prompt Engineering</h3>
+                <p class="text-xs text-slate-400 mb-3">AI Specialization</p>
+                <a href="certificados/PROMPT ENGINEERING.pdf" target="_blank" class="inline-flex items-center text-xs text-purple-400 hover:text-purple-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Programación Básica -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-blue-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-blue-400">Programación Básica</h3>
+                <p class="text-xs text-slate-400 mb-3">Fundamentos</p>
+                <a href="certificados/PROGRAMACION BASICA.pdf" target="_blank" class="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Desarrollo con IA -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-green-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center group-hover:bg-green-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-green-400">Desarrollo con IA</h3>
+                <p class="text-xs text-slate-400 mb-3">AI Development</p>
+                <a href="certificados/desarrollo con IA.pdf" target="_blank" class="inline-flex items-center text-xs text-green-400 hover:text-green-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Windsurf -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-cyan-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-cyan-500/10 rounded-full flex items-center justify-center group-hover:bg-cyan-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-cyan-400">Windsurf</h3>
+                <p class="text-xs text-slate-400 mb-3">IDE Tool</p>
+                <a href="certificados/windsurf.pdf" target="_blank" class="inline-flex items-center text-xs text-cyan-400 hover:text-cyan-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-indigo-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-indigo-500/10 rounded-full flex items-center justify-center group-hover:bg-indigo-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-indigo-400">Machine Learning</h3>
+                <p class="text-xs text-slate-400 mb-3">AI Specialization</p>
+                <a href="certificados/Machine Learning.pdf" target="_blank" class="inline-flex items-center text-xs text-indigo-400 hover:text-indigo-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- LOVABLE -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-pink-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-pink-500/10 rounded-full flex items-center justify-center group-hover:bg-pink-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-pink-400">LOVABLE</h3>
+                <p class="text-xs text-slate-400 mb-3">Development Platform</p>
+                <a href="certificados/LOVABLE.pdf" target="_blank" class="inline-flex items-center text-xs text-pink-400 hover:text-pink-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Ingeniería de Software -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-teal-500/30 transition-all duration-300 group">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-teal-500/10 rounded-full flex items-center justify-center group-hover:bg-teal-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-teal-400">Ingeniería de Software</h3>
+                <p class="text-xs text-slate-400 mb-3">Software Engineering</p>
+                <a href="certificados/ingieneria de software.pdf" target="_blank" class="inline-flex items-center text-xs text-teal-400 hover:text-teal-300 font-medium transition">
+                    Ver Certificado →
+                </a>
+            </div>
+
+            <!-- Additional Certification Placeholder -->
+            <div class="certification-card p-6 rounded-2xl text-center hover:border-yellow-500/30 transition-all duration-300 group border-2 border-dashed border-slate-600">
+                <div class="certification-icon mb-4">
+                    <div class="w-16 h-16 mx-auto bg-yellow-500/10 rounded-full flex items-center justify-center group-hover:bg-yellow-500/20 transition-all duration-300">
+                        <svg class="w-10 h-10 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="font-bold text-lg mb-2 text-yellow-400">Próximamente</h3>
+                <p class="text-xs text-slate-400 mb-3">Nueva Certificación</p>
+                <div class="inline-flex items-center text-xs text-yellow-400 font-medium">
+                    En Progreso...
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center mt-12">
+            <p class="text-lg text-slate-300 mb-4">
+                Certificaciones en tecnologías de vanguardia para garantizar soluciones profesionales y actualizadas.
+            </p>
+            <a href="#contacto" class="inline-flex items-center text-blue-400 hover:text-blue-300 font-bold text-lg transition">
+                Ver todas las credenciales →
+            </a>
+        </div>
+    </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-slate-900 border-t border-slate-800 py-12 text-center">
+        <h2 id="txt-footer-title" class="text-2xl font-bold mb-6 text-white">¿Listo para construir el futuro?</h2>
+        <p class="text-slate-400 mb-6">gcg13games@gmail.com</p>
+        <p class="text-slate-600 text-xs"> 2026 Gustavo Martinez (GCG-13). <span id="txt-footer">All rights reserved.</span></p>
     </footer>
 
     <script>
+        // --- LÓGICA DE LA TERMINAL ---
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalHistory = document.getElementById('terminal-history');
+        const terminalContent = document.getElementById('terminal-content');
+
+        const commands = {
+            help: () => "Comandos disponibles: <br>- <b>about</b>: Quién soy<br>- <b>sensei</b>: Info del motor IA<br>- <b>projects</b>: Mis trabajos<br>- <b>skills</b>: Tecnologías dominadas<br>- <b>certifications</b>: Ver certificaciones<br>- <b>certs</b>: Lista rápida de certificados<br>- <b>cs50</b>: Ver certificado CS50<br>- <b>harvard</b>: Ver certificado Harvard<br>- <b>ai-certs</b>: Certificaciones de IA<br>- <b>dev-certs</b>: Certificaciones de desarrollo<br>- <b>contact</b>: Información de contacto<br>- <b>github</b>: Ver mi código<br>- <b>cv</b>: Descargar CV PDF<br>- <b>email</b>: Enviar correo<br>- <b>clear</b>: Limpiar terminal<br>- <b>osu</b>: Filosofía de trabajo",
+            about: () => "Software Engineer & AI Architect. Fundador de GCG-13. Certificado por Harvard CS50. Especializado en IA determinista y arquitectura de software.",
+            sensei: () => "Sensei-1.0 Engine: Motor de IA determinista basado en reglas. Carga offline: OK. Precisión NLP: 85%+",
+            projects: () => "Proyectos activos: <br>🧠 <b>Sensei AI</b> - Motor de IA Simbólica<br>🛒 <b>GCG Store</b> - Marketplace Digital<br>🎮 <b>Shooter Logic</b> - Scripting en Lua",
+            skills: () => "Tecnologías principales:<br>💻 <b>Frontend:</b> TypeScript, React, Tailwind CSS<br>🤖 <b>IA:</b> Symbolic AI, NLP, Machine Learning<br>🔧 <b>Tools:</b> Git, Firebase, VS Code<br>🎯 <b>Backend:</b> Node.js, Python, Firebase",
+            certifications: () => {
+                window.open('certificados/CS50.pdf', '_blank');
+                return "🎓 <b>Certificaciones Profesionales:</b><br>🔴 CS50 - Harvard University<br>🟠 Claude Code - Anthropic<br>⚫ Git & GitHub<br>🟣 Prompt Engineering<br>🔵 Programación Básica<br>🟢 Desarrollo con IA<br>🔵 Windsurf<br>🔵 Machine Learning<br>🩷 LOVABLE<br>🟢 Ingeniería de Software<br><br>Abriendo primer certificado... Usa <b>certs</b> para lista completa.";
+            },
+            certs: () => "📜 <b>Lista de Certificaciones:</b><br>1. <b>cs50</b> - Harvard University<br>2. <b>claude</b> - Anthropic<br>3. <b>git</b> - Version Control<br>4. <b>prompt</b> - AI Specialization<br>5. <b>programming</b> - Fundamentos<br>6. <b>ai-dev</b> - AI Development<br>7. <b>windsurf</b> - IDE Tool<br>8. <b>ml</b> - Machine Learning<br>9. <b>lovable</b> - Development Platform<br>10. <b>software</b> - Software Engineering<br><br>Escribe el nombre del certificado para verlo.",
+            cs50: () => { window.open('certificados/CS50.pdf', '_blank'); return "🔴 Abriendo certificado CS50 de Harvard University..."; },
+            harvard: () => { window.open('certificados/CS50.pdf', '_blank'); return "🎓 Abriendo certificado oficial de Harvard University..."; },
+            claude: () => { window.open('certificados/CLAUDE CODE.pdf', '_blank'); return "🟠 Abriendo certificado Claude Code de Anthropic..."; },
+            git: () => { window.open('certificados/GIT Y GITHUB.pdf', '_blank'); return "⚫ Abriendo certificado Git & GitHub..."; },
+            prompt: () => { window.open('certificados/PROMPT ENGINEERING.pdf', '_blank'); return "🟣 Abriendo certificado Prompt Engineering..."; },
+            programming: () => { window.open('certificados/PROGRAMACION BASICA.pdf', '_blank'); return "🔵 Abriendo certificado Programación Básica..."; },
+            "ai-dev": () => { window.open('certificados/desarrollo con IA.pdf', '_blank'); return "🟢 Abriendo certificado Desarrollo con IA..."; },
+            windsurf: () => { window.open('certificados/windsurf.pdf', '_blank'); return "🔵 Abriendo certificado Windsurf IDE..."; },
+            ml: () => { window.open('certificados/Machine Learning.pdf', '_blank'); return "🔵 Abriendo certificado Machine Learning..."; },
+            lovable: () => { window.open('certificados/LOVABLE.pdf', '_blank'); return "🩷 Abriendo certificado LOVABLE..."; },
+            software: () => { window.open('certificados/ingieneria de software.pdf', '_blank'); return "🟢 Abriendo certificado Ingeniería de Software..."; },
+            "ai-certs": () => "🤖 <b>Certificaciones de IA:</b><br>🟠 Claude Code - Anthropic<br>🟣 Prompt Engineering<br>🟢 Desarrollo con IA<br>🔵 Machine Learning<br><br>Usa: <b>claude</b>, <b>prompt</b>, <b>ai-dev</b>, <b>ml</b> para ver cada uno.",
+            "dev-certs": () => "💻 <b>Certificaciones de Desarrollo:</b><br>⚫ Git & GitHub<br>🔵 Programación Básica<br>🔵 Windsurf<br>🩷 LOVABLE<br>🟢 Ingeniería de Software<br><br>Usa: <b>git</b>, <b>programming</b>, <b>windsurf</b>, <b>lovable</b>, <b>software</b> para ver cada uno.",
+            contact: () => "📧 <b>Información de Contacto:</b><br>✉️ Email: gcg13games@gmail.com<br>📞whatsapp: +58 426-2171291<br>🐙 GitHub: github.com/GCG-13<br>🌐 Web: Disponible en este portafolio<br><br>Usa <b>email</b>, <b>WhatsApp</b> o <b>github</b> para acceso rápido.",
+            github: () => { window.open('https://github.com/GCG-13', '_blank'); return "🐙 Abriendo GitHub de GCG-13..."; },
+            cv: () => { window.open('Curriculum.pdf', '_blank'); return "📄 Abriendo CV de Gustavo Martinez..."; },
+            email: () => { window.open('mailto:gcg13games@gmail.com?subject=Contacto%20desde%20Portafolio', '_blank'); return "📧 Abriendo cliente de correo para gcg13games@gmail.com..."; },
+            clear: () => { terminalHistory.innerHTML = ""; return ""; },
+            osu: () => "🥋 <b>OSU! - Filosofía de Trabajo:</b><br>• Respeto por el código limpio<br>• Disciplina en arquitectura<br>• Honor en la documentación<br>• Maestría en la ejecución<br><br>¡El camino del desarrollador maestro!"
+        };
+
+        terminalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const fullCmd = terminalInput.value.toLowerCase().trim();
+                const response = commands[fullCmd] ? commands[fullCmd]() : `Comando no reconocido: '${fullCmd}'. Escribe 'help' para ayuda.`;
+                
+                if (fullCmd !== 'clear') {
+                    const line = document.createElement('p');
+                    line.innerHTML = `<span class="text-blue-500">guest@gcg13:~$</span> ${terminalInput.value}`;
+                    terminalHistory.appendChild(line);
+                    
+                    if (response) {
+                        const resLine = document.createElement('p');
+                        resLine.className = "text-slate-300 mb-2";
+                        resLine.innerHTML = response;
+                        terminalHistory.appendChild(resLine);
+                    }
+                }
+                
+                terminalInput.value = "";
+                terminalContent.scrollTop = terminalContent.scrollHeight;
+            }
+        });
+
+        // --- LÓGICA DE IDIOMAS ---
         const translations = {
-            // puede agregarse más idiomas aquí en el futuro
             es: {
                 "txt-hero-greet": "Soy",
-                "txt-hero-desc": "Lead Developer | Fundador de GCG-13 | Certificado CS50",
-                "btn-contact": "Contacto",
+                "txt-hero-desc": "Arquitecto de IA | Ingeniero de Software | Fundador de GCG-13",
                 "txt-about-title": "Sobre mí",
-                "txt-about-p": "Desarrollador enfocado en la creación de soluciones eficientes. Fundador de <strong>GCG-13</strong>, donde lidero el desarrollo de aplicaciones web modernas (PWA) y motores de lógica propia. Mi enfoque combina la rigurosidad algorítmica de <strong>Harvard CS50</strong> con la agilidad de las herramientas de IA más modernas del 2026.",
-                "txt-projects-title": "Proyectos Destacados",
-                "txt-proj-store": "Marketplace de artículos digitales con Firebase y PWA.",
-                "txt-proj-ai": "Motor de lógica NLP basado en reglas para asistencia técnica sin APIs externas.",
-                "txt-edu-title": "Formación & Certificados",
-                "txt-edu-1": "Introducción a las Ciencias de la Computación CS50",
-                "txt-edu-2": "Desarrollo con IA 2026",
-                "txt-edu-3": "Especialización en Git, GitHub y Machine Learning",
-                "txt-footer": "¿Listo para construir el futuro?"
+                "txt-about-p": "Ingeniero de Software enfocado en la construcción de sistemas expertos. Como fundador de <strong>GCG-13</strong>, desarrollo arquitecturas modulares y motores de IA simbólica.",
+                "txt-tech-title": "Habilidades Técnicas",
+                "txt-tech-logic": "Lógica & IA",
+                "txt-tech-frontend": "Frontend",
+                "txt-tech-tools": "Herramientas",
+                "txt-tech-gamedev": "Juegos",
+                "txt-projects-title": "Proyectos",
+                "txt-proj1-desc": "Motor de IA Simbólica para Karate-do. Lógica de inferencia determinista.",
+                "txt-proj2-desc": "Marketplace de artículos digitales optimizado como PWA con Firebase.",
+                "txt-skills-title": "Tecnologías & Herramientas",
+                "txt-stats-title": "Impacto & Resultados",
+                "txt-stats-years": "Años de Experiencia",
+                "txt-stats-projects": "Proyectos Completados", 
+                "txt-stats-code": "Líneas de Código",
+                "txt-stats-nlp": "Precisión NLP",
+                "txt-services-title": "Servicios Profesionales",
+                "txt-service1-title": "Desarrollo Web",
+                "txt-service1-desc": "Sitios web modernos, rápidos y responsivos con las últimas tecnologías.",
+                "txt-service1-f1": "React/Vue/Angular",
+                "txt-service1-f2": "Diseño Responsive",
+                "txt-service1-f3": "Optimización SEO",
+                "txt-service1-f4": "PWA Ready",
+                "txt-service2-title": "Inteligencia Artificial",
+                "txt-service2-desc": "Motores de IA personalizados, NLP y sistemas expertos para automatizar procesos.",
+                "txt-service2-f1": "Symbolic AI",
+                "txt-service2-f2": "Procesamiento NLP",
+                "txt-service2-f3": "Machine Learning",
+                "txt-service2-f4": "Sistemas Expertos",
+                "txt-service3-title": "Consultoría Técnica",
+                "txt-service3-desc": "Asesoramiento especializado en arquitectura de software y mejores prácticas.",
+                "txt-service3-f1": "Arquitectura de Sistemas",
+                "txt-service3-f2": "Code Review",
+                "txt-service3-f3": "Optimización Rendimiento",
+                "txt-service3-f4": "Mentoring Técnico",
+                "txt-process-title": "Mi Proceso de Trabajo",
+                "txt-process-step1": "Descubrimiento",
+                "txt-process-desc1": "Análisis profundo de requisitos y objetivos del proyecto para entender completamente las necesidades.",
+                "txt-process-step2": "Diseño",
+                "txt-process-desc2": "Arquitectura modular y planificación técnica con diagramas y prototipos funcionales.",
+                "txt-process-step3": "Desarrollo",
+                "txt-process-desc3": "Implementación ágil con código limpio, pruebas continuas y revisión constante.",
+                "txt-process-step4": "Entrega",
+                "txt-process-desc4": "Despliegue final, documentación completa y soporte post-lanzamiento garantizado.",
+                "txt-certifications-title": "Certificaciones Profesionales",
+                "txt-footer-title": "¿Listo para construir el futuro?",
+                "txt-footer": "Todos los derechos reservados."
             },
             en: {
                 "txt-hero-greet": "I am",
-                "txt-hero-desc": "Lead Developer | GCG-13 Founder | CS50 Certified",
-                "btn-contact": "Contact Me",
+                "txt-hero-desc": "AI Architect | Software Engineer | GCG-13 Founder",
                 "txt-about-title": "About Me",
-                "txt-about-p": "Developer focused on creating efficient solutions. Founder of <strong>GCG-13</strong>, leading the development of modern web applications (PWA) and custom logic engines. My approach combines the algorithmic rigor of <strong>Harvard CS50</strong> with the agility of the most modern AI tools of 2026.",
-                "txt-projects-title": "Featured Projects",
-                "txt-proj-store": "Digital items marketplace built with Firebase and PWA.",
-                "txt-proj-ai": "Rule-based NLP logic engine for technical assistance without external APIs.",
-                "txt-edu-title": "Education & Certificates",
-                "txt-edu-1": "CS50's Introduction to Computer Science",
-                "txt-edu-2": "AI Development 2026",
-                "txt-edu-3": "Git, GitHub and Machine Learning Specialization",
-                "txt-footer": "Ready to build the future?"
+                "txt-about-p": "Software Engineer focused on building expert systems. As the founder of <strong>GCG-13</strong>, I develop modular architectures and symbolic AI engines.",
+                "txt-tech-title": "Tech Stack",
+                "txt-tech-logic": "Logic & AI",
+                "txt-tech-frontend": "Frontend",
+                "txt-tech-tools": "Tools",
+                "txt-tech-gamedev": "Game Development",
+                "txt-projects-title": "Projects",
+                "txt-proj1-desc": "Symbolic AI Engine for Karate-do. Deterministic inference logic.",
+                "txt-proj2-desc": "Digital item marketplace optimized as PWA with Firebase.",
+                "txt-skills-title": "Technologies & Tools",
+                "txt-stats-title": "Impact & Results",
+                "txt-stats-years": "Years of Experience",
+                "txt-stats-projects": "Projects Completed",
+                "txt-stats-code": "Lines of Code", 
+                "txt-stats-nlp": "NLP Accuracy",
+                "txt-services-title": "Professional Services",
+                "txt-service1-title": "Web Development",
+                "txt-service1-desc": "Modern, fast and responsive websites with the latest technologies.",
+                "txt-service1-f1": "React/Vue/Angular",
+                "txt-service1-f2": "Responsive Design",
+                "txt-service1-f3": "SEO Optimization",
+                "txt-service1-f4": "PWA Ready",
+                "txt-service2-title": "Artificial Intelligence",
+                "txt-service2-desc": "Custom AI engines, NLP and expert systems to automate processes.",
+                "txt-service2-f1": "Symbolic AI",
+                "txt-service2-f2": "NLP Processing",
+                "txt-service2-f3": "Machine Learning",
+                "txt-service2-f4": "Expert Systems",
+                "txt-service3-title": "Technical Consulting",
+                "txt-service3-desc": "Specialized consulting in software architecture and best practices.",
+                "txt-service3-f1": "Systems Architecture",
+                "txt-service3-f2": "Code Review",
+                "txt-service3-f3": "Performance Optimization",
+                "txt-service3-f4": "Technical Mentoring",
+                "txt-process-title": "My Work Process",
+                "txt-process-step1": "Discovery",
+                "txt-process-desc1": "Deep analysis of requirements and project objectives to fully understand the needs.",
+                "txt-process-step2": "Design",
+                "txt-process-desc2": "Modular architecture and technical planning with diagrams and functional prototypes.",
+                "txt-process-step3": "Development",
+                "txt-process-desc3": "Agile implementation with clean code, continuous testing and constant review.",
+                "txt-process-step4": "Delivery",
+                "txt-process-desc4": "Final deployment, complete documentation and guaranteed post-launch support.",
+                "txt-footer-title": "Ready to build the future?",
+                "txt-footer": "All rights reserved."
             }
         };
 
         function setLanguage(lang) {
-            if (!translations[lang]) {
-                lang = 'es'; // fallback
-            }
-            // actualizar atributo lang del documento
             document.documentElement.lang = lang;
-
-            // Recorrer el diccionario y cambiar los textos
             for (let id in translations[lang]) {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.innerHTML = translations[lang][id];
-                }
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = translations[lang][id];
             }
-            
-            // ocultar modal
-            const modal = document.getElementById('language-modal');
-            modal.classList.add('opacity-0','pointer-events-none');
-            
-            // Guardar preferencia
+            document.getElementById('language-modal').classList.add('opacity-0','pointer-events-none');
             localStorage.setItem('pref-lang', lang);
         }
 
-        // funcion para reabrir el modal desde el botón persistente
         function showLanguageModal() {
-            const modal = document.getElementById('language-modal');
-            modal.classList.remove('opacity-0','pointer-events-none');
+            document.getElementById('language-modal').classList.remove('opacity-0','pointer-events-none');
         }
 
-        // Revisar si ya eligió idioma antes
         window.onload = () => {
-            const savedLang = localStorage.getItem('pref-lang');
-            if (savedLang) {
-                setLanguage(savedLang);
-            } else {
-                // no elegido antes, mostrar modal
-                showLanguageModal();
-            }
+            const saved = localStorage.getItem('pref-lang');
+            if (saved) setLanguage(saved); else showLanguageModal();
+            
+            // Activar animaciones de scroll
+            initScrollAnimations();
         };
+
+        // --- LÓGICA DE ANIMACIONES DE SCROLL ---
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todos los elementos con scroll-reveal
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // --- EFECTOS ADICIONALES ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Efecto de escritura para el terminal
+            const terminalInput = document.getElementById('terminal-input');
+            if (terminalInput) {
+                terminalInput.addEventListener('focus', () => {
+                    terminalInput.style.caretColor = '#38bdf8';
+                });
+            }
+
+            // Efecto parallax sutil para el hero
+            const heroSection = document.querySelector('header');
+            if (heroSection) {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const parallax = heroSection.querySelector('.gradient-text');
+                    if (parallax) {
+                        parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    }
+                });
+            }
+
+            // Animación de números en estadísticas
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const animateNumbers = () => {
+                statNumbers.forEach(stat => {
+                    const target = stat.innerText;
+                    const isPercentage = target.includes('%');
+                    const isKPlus = target.includes('K+');
+                    let finalValue = parseInt(target.replace(/[^0-9]/g, ''));
+                    
+                    if (isNaN(finalValue)) return;
+                    
+                    let currentValue = 0;
+                    const increment = finalValue / 50;
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= finalValue) {
+                            currentValue = finalValue;
+                            clearInterval(timer);
+                        }
+                        
+                        let displayValue = Math.floor(currentValue);
+                        if (isKPlus) {
+                            displayValue = displayValue + 'K+';
+                        } else if (isPercentage) {
+                            displayValue = displayValue + '%';
+                        } else {
+                            displayValue = displayValue.toString();
+                        }
+                        
+                        stat.innerText = displayValue;
+                    }, 30);
+                });
+            };
+
+            // Activar animación de números cuando sea visible
+            const statsSection = document.getElementById('stats');
+            if (statsSection) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateNumbers();
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                statsObserver.observe(statsSection);
+            }
+
+            // Efecto de hover en badges con ripple effect
+            document.querySelectorAll('.tech-badge').forEach(badge => {
+                badge.addEventListener('mouseenter', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.width = '100%';
+                    ripple.style.height = '100%';
+                    ripple.style.background = 'radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%)';
+                    ripple.style.borderRadius = 'inherit';
+                    ripple.style.pointerEvents = 'none';
+                    ripple.style.animation = 'ripple 0.6s ease-out';
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Efecto de typing para el título del hero
+            const heroTitle = document.querySelector('.gradient-text');
+            if (heroTitle) {
+                const text = heroTitle.innerText;
+                heroTitle.innerText = '';
+                let index = 0;
+                
+                const typeWriter = () => {
+                    if (index < text.length) {
+                        heroTitle.innerText += text.charAt(index);
+                        index++;
+                        setTimeout(typeWriter, 150);
+                    }
+                };
+                
+                setTimeout(typeWriter, 1000);
+            }
+        });
+
+        // --- ESTILOS ADICIONES PARA ANIMACIONES ---
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                from {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+            
+            .tech-badge {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .service-card::before {
+                pointer-events: none;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
