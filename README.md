@@ -22,6 +22,14 @@ Es mi proyecto insignia bajo la marca **Sensei IA por GCG-13**. Es un motor de I
 - **NLP Local**: Procesamiento semántico sin dependencia de APIs externas, garantizando privacidad y baja latencia.
 - **Algoritmia**: Uso avanzado de *Levenshtein Distance* y búsqueda difusa (*Fuzzy Search*) para interpretación de comandos.
 
+### 🏆 Featured Work & Research
+
+I am the lead developer of **Sensei 1.0**, a Symbolic AI engine for martial arts. 
+You can find my technical whitepaper and cite my work here:
+
+* 📄 [Whitepaper (Scribd)](https://es.scribd.com/document/1021131820/Sensei-1-0-Architecture-Whitepaper-GCG13)
+* 📚 [Cite Sensei 1.0 (BibTeX)](https://github.com/GCG-13/Sensei-1.0-engine#citation)
+
 ### [GCG Store Digital](https://github.com/GCG-13/GCG-Store-Digital) | `PWA` `Firebase` `Cloud Architecture`
 Marketplace optimizado como Progressive Web App. Enfocado en la **escalabilidad** y la experiencia de usuario (*UX*) mediante persistencia de datos en tiempo real.
 
